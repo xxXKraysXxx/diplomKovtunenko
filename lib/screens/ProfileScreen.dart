@@ -55,7 +55,7 @@ class ProfileScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 16, horizontal: 0),
                 child: Text(
-                  "Рандом Какой-то",
+                  "Name Surname",
                   textAlign: TextAlign.start,
                   overflow: TextOverflow.clip,
                   style: TextStyle(

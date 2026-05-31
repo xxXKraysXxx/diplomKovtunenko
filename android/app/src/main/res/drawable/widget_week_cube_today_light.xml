@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Today-cube background on light theme. Uses the brand navy at ~14% alpha
+    so today reads as the tinted anchor of the row while still sharing the
+    rounded corner family with sibling cubes. Accent is fixed here because
+    RemoteViews can't tint a drawable dynamically from the user's seed —
+    the small divergence from a custom accent seed is acceptable.
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#0B3B7C" />
+    <corners android:radius="10dp" />
+</shape>

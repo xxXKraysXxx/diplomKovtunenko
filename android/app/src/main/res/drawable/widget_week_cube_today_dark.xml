@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Today-cube background on dark theme. Stronger blue fill than the light
+    variant so the accent still reads against the near-black card; shares
+    corner geometry with sibling cubes.
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#B060A5FA" />
+    <corners android:radius="10dp" />
+</shape>

@@ -1,219 +1,174 @@
-///File download from FlutterViz- Drag and drop a tools. For more details visit https://flutterviz.io/
-
-///File download from FlutterViz- Drag and drop a tools. For more details visit https://flutterviz.io/
-
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginScreen extends StatelessWidget {
+import '../common/auth_error.dart';
+import '../common/top_banner.dart';
+import '../l10n/generated/app_localizations.dart';
+import '../state/auth.dart';
+import '../state/gate.dart';
+
+class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
 
   @override
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends ConsumerState<LoginScreen> {
+  final _loginCtrl = TextEditingController();
+  final _passCtrl = TextEditingController();
+  bool _obscure = true;
+  bool _busy = false;
+  String? _error;
+
+  @override
+  void dispose() {
+    _loginCtrl.dispose();
+    _passCtrl.dispose();
+    super.dispose();
+  }
+
+  Future<void> _submit() async {
+    final l10n = AppLocalizations.of(context);
+    final login = _loginCtrl.text.trim();
+    final password = _passCtrl.text;
+    if (login.isEmpty || password.isEmpty) {
+      setState(() => _error = l10n.authBadCredentials);
+      return;
+    }
+    setState(() {
+      _busy = true;
+      _error = null;
+    });
+    try {
+      await ref.read(authProvider.notifier).login(login, password);
+      await ref.read(gateSeenProvider.notifier).markSeen();
+      if (mounted) context.go('/schedule');
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _busy = false;
+          _error = null;
+        });
+        if (isConnectionLike(e)) {
+          TopBanner.showError(l10n.authConnectionTimeout);
+        } else {
+          setState(() => _error = describeAuthError(l10n, e));
+        }
+      }
+    }
+  }
+
+  Future<void> _continueAsGuest() async {
+    setState(() => _busy = true);
+    await ref.read(gateSeenProvider.notifier).markSeen();
+    await ref.read(guestModeChosenProvider.notifier).markChosen();
+    if (context.mounted) context.go('/schedule');
+  }
+
+  @override
   Widget build(BuildContext context) {
-    String? login;
+    final scheme = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
-      backgroundColor: Color(0xffffffff),
-      body: Align(
-        alignment: Alignment.center,
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(16, 50, 16, 16),
+      body: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 420),
           child: SingleChildScrollView(
-            child: Form(
-              autovalidateMode: AutovalidateMode.always,
-              onChanged: () {
-                Form.of(primaryFocus!.context!).save();
-              },
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                children: [
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  l10n.appTitle,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 26,
+                    color: scheme.onSurface,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  l10n.loginTitle,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: scheme.onSurfaceVariant,
+                  ),
+                ),
+                const SizedBox(height: 24),
+                TextField(
+                  controller: _loginCtrl,
+                  enabled: !_busy,
+                  autofillHints: const [AutofillHints.username],
+                  decoration: InputDecoration(
+                    labelText: l10n.loginLabel,
+                    border: const OutlineInputBorder(),
+                  ),
+                  onSubmitted: (_) => _submit(),
+                ),
+                const SizedBox(height: 12),
+                TextField(
+                  controller: _passCtrl,
+                  enabled: !_busy,
+                  obscureText: _obscure,
+                  autofillHints: const [AutofillHints.password],
+                  decoration: InputDecoration(
+                    labelText: l10n.passwordLabel,
+                    border: const OutlineInputBorder(),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _obscure ? Icons.visibility : Icons.visibility_off,
+                      ),
+                      onPressed: () => setState(() => _obscure = !_obscure),
+                    ),
+                  ),
+                  onSubmitted: (_) => _submit(),
+                ),
+                if (_error != null) ...[
+                  const SizedBox(height: 10),
                   Text(
-                    "Вход",
-                    textAlign: TextAlign.start,
-                    overflow: TextOverflow.clip,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontStyle: FontStyle.normal,
-                      fontSize: 24,
-                      color: Color(0xff000000),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 30, 0, 16),
-                    child: TextFormField(
-                      controller: TextEditingController(),
-                      obscureText: false,
-                      textAlign: TextAlign.start,
-                      maxLines: 1,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontStyle: FontStyle.normal,
-                        fontSize: 14,
-                        color: Color(0xff000000),
-                      ),
-                      decoration: InputDecoration(
-                        disabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12.0),
-                          borderSide:
-                              BorderSide(color: Color(0x00ffffff), width: 1),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12.0),
-                          borderSide:
-                              BorderSide(color: Color(0x00ffffff), width: 1),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12.0),
-                          borderSide:
-                              BorderSide(color: Color(0x00ffffff), width: 1),
-                        ),
-                        hintText: "Логин",
-                        hintStyle: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontStyle: FontStyle.normal,
-                          fontSize: 14,
-                          color: Color(0xff9f9d9d),
-                        ),
-                        filled: true,
-                        fillColor: Color(0xfff2f2f3),
-                        isDense: false,
-                        contentPadding:
-                            EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-                      ),
-                      onSaved: (String? value) {
-                        login = value;
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, 0, 16),
-                    child: TextField(
-                      controller: TextEditingController(),
-                      obscureText: false,
-                      textAlign: TextAlign.start,
-                      maxLines: 1,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontStyle: FontStyle.normal,
-                        fontSize: 14,
-                        color: Color(0xff000000),
-                      ),
-                      decoration: InputDecoration(
-                        disabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12.0),
-                          borderSide:
-                              BorderSide(color: Color(0x00ffffff), width: 1),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12.0),
-                          borderSide:
-                              BorderSide(color: Color(0x00ffffff), width: 1),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12.0),
-                          borderSide:
-                              BorderSide(color: Color(0x00ffffff), width: 1),
-                        ),
-                        hintText: "Пароль",
-                        hintStyle: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontStyle: FontStyle.normal,
-                          fontSize: 14,
-                          color: Color(0xff9f9d9d),
-                        ),
-                        filled: true,
-                        fillColor: Color(0xfff2f2f3),
-                        isDense: false,
-                        contentPadding:
-                            EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 30, 0, 16),
-                    child: MaterialButton(
-                      onPressed: () {
-                        if (login == 'user') {
-                          GoRouter.of(context).go('/raspisanie');
-                        } else {
-                          showDialog<String>(
-                            context: context,
-                            builder: (BuildContext context) => AlertDialog(
-                              title: Text('Ошибка'),
-                              content:
-                                  const Text('Неправильный логин или пароль!'),
-                              actions: <Widget>[
-                                TextButton(
-                                  onPressed: () => Navigator.pop(context, 'OK'),
-                                  child: Text('OK'),
-                                ),
-                              ],
-                            ),
-                          );
-                        }
-                      },
-                      color: Color(0xff30a0ff),
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      padding: EdgeInsets.all(16),
-                      child: Text(
-                        "Войти",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.normal,
-                        ),
-                      ),
-                      textColor: Color(0xffffffff),
-                      height: 40,
-                      minWidth: MediaQuery.of(context).size.width,
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          "Нет аккаунта?",
-                          textAlign: TextAlign.start,
-                          overflow: TextOverflow.clip,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontStyle: FontStyle.normal,
-                            fontSize: 14,
-                            color: Color(0xff000000),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(4, 0, 0, 0),
-                          child:GestureDetector(
-                            onTap: () {
-                              GoRouter.of(context).go('/register');
-                            },
-                          child: Text(
-                            "Зарегистрируйся!",
-                            textAlign: TextAlign.start,
-                            overflow: TextOverflow.clip,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontStyle: FontStyle.normal,
-                              fontSize: 14,
-                              color: Color(0xff30a0ff),
-                            ),
-                          ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    _error!,
+                    style: TextStyle(color: scheme.error),
                   ),
                 ],
-              ),
+                const SizedBox(height: 16),
+                FilledButton(
+                  onPressed: _busy ? null : _submit,
+                  style: FilledButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                  ),
+                  child: _busy
+                      ? const SizedBox(
+                          width: 18,
+                          height: 18,
+                          child: CircularProgressIndicator(strokeWidth: 2),
+                        )
+                      : Text(l10n.loginSubmit,
+                          style: const TextStyle(fontWeight: FontWeight.w700)),
+                ),
+                const SizedBox(height: 10),
+                OutlinedButton(
+                  onPressed: _busy ? null : _continueAsGuest,
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                  ),
+                  child: Text(l10n.loginContinueAsGuest),
+                ),
+                const SizedBox(height: 16),
+                Center(
+                  child: TextButton(
+                    onPressed: _busy ? null : () => context.go('/register'),
+                    child: Text(
+                      l10n.loginRegisterHint,
+                      style: const TextStyle(fontSize: 13),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),

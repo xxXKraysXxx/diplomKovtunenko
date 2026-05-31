@@ -1,0 +1,3 @@
+-keep class ru.ncti.schedule.client.widgets.** { *; }
+-keep class es.antonborri.home_widget.** { *; }
+-keep public class * extends android.appwidget.AppWidgetProvider

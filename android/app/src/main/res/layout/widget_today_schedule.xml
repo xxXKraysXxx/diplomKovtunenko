@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_today_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/widget_background_light"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:id="@+id/widget_today_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="6dp">
+
+        <ImageView
+            android:id="@+id/widget_today_accent"
+            android:layout_width="4dp"
+            android:layout_height="18dp"
+            android:background="@drawable/widget_accent_strip"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@null" />
+
+        <TextView
+            android:id="@+id/widget_today_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Сегодня"
+            android:textColor="#0F172A"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:ellipsize="end" />
+    </LinearLayout>
+
+    <!-- Pool of row slots — all hidden by default. The provider counts how
+         many fit in the current height and flips that many to VISIBLE. -->
+    <LinearLayout
+        android:id="@+id/widget_today_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+
+    <TextView
+        android:id="@+id/widget_today_empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Нет занятий — откройте приложение"
+        android:textSize="12sp"
+        android:textColor="#64748B"
+        android:paddingVertical="6dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/widget_today_more"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="4dp"
+        android:textColor="#64748B"
+        android:textSize="11sp"
+        android:visibility="gone" />
+
+    <!-- Hint block: shown only at 4x3 with surplus room. Details the
+         current-or-next lesson (subject, teacher, room, time range). -->
+    <LinearLayout
+        android:id="@+id/widget_today_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="8dp"
+        android:paddingTop="8dp"
+        android:visibility="gone">
+        <ImageView
+            android:id="@+id/widget_today_hint_accent"
+            android:layout_width="4dp"
+            android:layout_height="36dp"
+            android:background="@drawable/widget_accent_strip"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@null" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/widget_today_hint_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="10sp"
+                android:textColor="#64748B"
+                android:maxLines="1"
+                android:ellipsize="end" />
+            <TextView
+                android:id="@+id/widget_today_hint_subject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#0F172A"
+                android:paddingTop="1dp"
+                android:maxLines="1"
+                android:ellipsize="end" />
+            <TextView
+                android:id="@+id/widget_today_hint_meta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:textColor="#64748B"
+                android:paddingTop="1dp"
+                android:maxLines="2"
+                android:ellipsize="end" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Non-today day-cube background on light theme. Subtle grey tint with a
+    soft corner radius so each day reads as a separate card instead of
+    disappearing into the panel. Today cubes use widget_week_cube_today_*
+    instead; the Kotlin provider swaps the resource on setBackgroundResource.
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#0F000000" />
+    <corners android:radius="10dp" />
+</shape>

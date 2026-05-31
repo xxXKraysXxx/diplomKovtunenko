@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Non-today day-cube background on dark theme. Matches widget_week_cube_light
+    in geometry; uses a low-alpha white fill so the cube reads as a lifted
+    card against the navy panel.
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#1AFFFFFF" />
+    <corners android:radius="10dp" />
+</shape>

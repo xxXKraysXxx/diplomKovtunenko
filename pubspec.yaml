@@ -1,31 +1,46 @@
-name: provider_shopper
-description: A shopping app sample that uses Provider for state management.
+name: ncti_schedule_client
+description: KTI schedule client (Flutter — Android, web, Windows; iOS config-only, macOS/Linux inherited from template).
 publish_to: none
 
-version: 1.0.0+1
+version: 1.3.17+1779753600
 
 environment:
-  sdk: '>=2.19.5 <4.0.0'
+  sdk: ^3.6.0
+  flutter: '>=3.41.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  go_router: ^6.0.0
-  provider: ^6.0.2
-  flutter_riverpod: ^2.3.6
-  window_size:
-    git:
-      url: https://github.com/google/flutter-desktop-embedding.git
-      path: plugins/window_size
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.20.2
+  go_router: ^17.2.1
+  flutter_riverpod: ^3.3.1
+  window_manager: ^0.5.1
+  graphql_flutter: ^5.2.1
+  shared_preferences: ^2.3.3
+  flutter_secure_storage: ^10.0.0
+  web: ^1.1.1
+  firebase_core: ^4.7.0
+  firebase_messaging: ^16.2.0
+  connectivity_plus: ^6.1.0
+  home_widget: ^0.9.1
+  url_launcher: ^6.3.1
+  package_info_plus: ^8.3.0
+  cached_network_image: ^3.4.1
+  path_provider: ^2.1.5
+  flex_color_picker: ^3.7.0
+  dynamic_color: ^1.7.0
+  flutter_html: ^3.0.0
 
 dev_dependencies:
-  analysis_defaults:
-    path: ../analysis_defaults
+  flutter_lints: ^6.0.0
   flutter_test:
     sdk: flutter
 
 flutter:
   uses-material-design: true
+  generate: true
 
   fonts:
     - family: Corben

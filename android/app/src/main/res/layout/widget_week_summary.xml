@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_week_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/widget_background_light"
+    android:padding="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="8dp">
+
+        <ImageView
+            android:id="@+id/widget_week_accent"
+            android:layout_width="4dp"
+            android:layout_height="16dp"
+            android:background="@drawable/widget_accent_strip"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@null" />
+
+        <TextView
+            android:id="@+id/widget_week_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Эта неделя"
+            android:textStyle="bold"
+            android:textColor="#0F172A"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <!-- CTA body: visible when no group/teacher is selected. -->
+    <TextView
+        android:id="@+id/widget_week_cta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Выберите группу или преподавателя"
+        android:textColor="#64748B"
+        android:textSize="12sp"
+        android:paddingVertical="6dp"
+        android:visibility="gone" />
+
+    <!-- Single-row layout: weightSum is deliberately omitted so that when
+         weekend cubes are hidden via View.GONE the remaining weekdays
+         auto-redistribute the freed width (LinearLayout sums the visible
+         children's weights instead of scaling against a fixed 7).
+
+         Each cube carries a default rounded-rect background so adjacent
+         days read as separate cards instead of blending into the panel.
+         The Kotlin provider swaps the resource for today and for dark
+         theme via setBackgroundResource on every redraw. -->
+    <LinearLayout
+        android:id="@+id/widget_week_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/widget_week_cube0"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="top|start"
+            android:background="@drawable/widget_week_cube_light"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="6dp"
+            android:layout_marginHorizontal="2dp">
+            <TextView
+                android:id="@+id/widget_week_label0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textColor="#0F172A"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/widget_week_count0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="2dp"
+                android:textColor="#0F172A"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/widget_week_dot0"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/widget_dot_empty"
+                android:contentDescription="@null" />
+            <TextView
+                android:id="@+id/widget_week_subjects0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:textColor="#0F172A"
+                android:textSize="10sp"
+                android:gravity="start"
+                android:lineSpacingExtra="1dp"
+                android:maxLines="24"
+                android:ellipsize="end" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/widget_week_cube1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="top|start"
+            android:background="@drawable/widget_week_cube_light"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="6dp"
+            android:layout_marginHorizontal="2dp">
+            <TextView
+                android:id="@+id/widget_week_label1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textColor="#0F172A"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/widget_week_count1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="2dp"
+                android:textColor="#0F172A"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/widget_week_dot1"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/widget_dot_empty"
+                android:contentDescription="@null" />
+            <TextView
+                android:id="@+id/widget_week_subjects1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:textColor="#0F172A"
+                android:textSize="10sp"
+                android:gravity="start"
+                android:lineSpacingExtra="1dp"
+                android:maxLines="24"
+                android:ellipsize="end" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/widget_week_cube2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="top|start"
+            android:background="@drawable/widget_week_cube_light"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="6dp"
+            android:layout_marginHorizontal="2dp">
+            <TextView
+                android:id="@+id/widget_week_label2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textColor="#0F172A"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/widget_week_count2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="2dp"
+                android:textColor="#0F172A"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/widget_week_dot2"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/widget_dot_empty"
+                android:contentDescription="@null" />
+            <TextView
+                android:id="@+id/widget_week_subjects2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:textColor="#0F172A"
+                android:textSize="10sp"
+                android:gravity="start"
+                android:lineSpacingExtra="1dp"
+                android:maxLines="24"
+                android:ellipsize="end" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/widget_week_cube3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="top|start"
+            android:background="@drawable/widget_week_cube_light"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="6dp"
+            android:layout_marginHorizontal="2dp">
+            <TextView
+                android:id="@+id/widget_week_label3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textColor="#0F172A"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/widget_week_count3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="2dp"
+                android:textColor="#0F172A"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/widget_week_dot3"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/widget_dot_empty"
+                android:contentDescription="@null" />
+            <TextView
+                android:id="@+id/widget_week_subjects3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:textColor="#0F172A"
+                android:textSize="10sp"
+                android:gravity="start"
+                android:lineSpacingExtra="1dp"
+                android:maxLines="24"
+                android:ellipsize="end" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/widget_week_cube4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="top|start"
+            android:background="@drawable/widget_week_cube_light"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="6dp"
+            android:layout_marginHorizontal="2dp">
+            <TextView
+                android:id="@+id/widget_week_label4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textColor="#0F172A"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/widget_week_count4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="2dp"
+                android:textColor="#0F172A"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/widget_week_dot4"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/widget_dot_empty"
+                android:contentDescription="@null" />
+            <TextView
+                android:id="@+id/widget_week_subjects4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:textColor="#0F172A"
+                android:textSize="10sp"
+                android:gravity="start"
+                android:lineSpacingExtra="1dp"
+                android:maxLines="24"
+                android:ellipsize="end" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/widget_week_cube5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="top|start"
+            android:background="@drawable/widget_week_cube_light"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="6dp"
+            android:layout_marginHorizontal="2dp">
+            <TextView
+                android:id="@+id/widget_week_label5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textColor="#0F172A"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/widget_week_count5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="2dp"
+                android:textColor="#0F172A"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/widget_week_dot5"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/widget_dot_empty"
+                android:contentDescription="@null" />
+            <TextView
+                android:id="@+id/widget_week_subjects5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:textColor="#0F172A"
+                android:textSize="10sp"
+                android:gravity="start"
+                android:lineSpacingExtra="1dp"
+                android:maxLines="24"
+                android:ellipsize="end" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/widget_week_cube6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="top|start"
+            android:background="@drawable/widget_week_cube_light"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="6dp"
+            android:layout_marginHorizontal="2dp">
+            <TextView
+                android:id="@+id/widget_week_label6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textColor="#0F172A"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/widget_week_count6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="2dp"
+                android:textColor="#0F172A"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/widget_week_dot6"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/widget_dot_empty"
+                android:contentDescription="@null" />
+            <TextView
+                android:id="@+id/widget_week_subjects6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:textColor="#0F172A"
+                android:textSize="10sp"
+                android:gravity="start"
+                android:lineSpacingExtra="1dp"
+                android:maxLines="24"
+                android:ellipsize="end" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,59 +1,149 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="$FLUTTER_BASE_HREF">
+  <base href="/">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="Расписание КТИ.">
+
+  <!-- Stop intermediate caches from pinning index.html itself. The hashed
+       assets (main.dart.wasm, main.dart.js, …) already cache-bust via Flutter
+       but the shell HTML needs must-revalidate or users stay stuck on an old
+       version indefinitely. -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- Superset of apple-mobile-web-app-capable; Safari keeps honouring
+       the old name, Android/Chrome honour the new one. Ships both so
+       neither side pings deprecation warnings. -->
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="provider_shopper">
+  <meta name="apple-mobile-web-app-title" content="Расписание КТИ">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>provider_shopper</title>
+  <title>Расписание КТИ</title>
   <link rel="manifest" href="manifest.json">
-
-  <script>
-    // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = null;
-  </script>
-  <!-- This script adds the flutter initialization JS code -->
-  <script src="flutter.js" defer></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      height: auto;
+      overflow-x: hidden;
+    }
+    /* Embed mode. flutter-view needs a concrete viewport or Flutter renders
+       into a 0x0 canvas and the content is invisible. Tying its height to
+       100vh ties it to the iframe's outer height — which the parent derives
+       from the height Dart posts post-layout (see lib/common/embed_bridge_web.dart).
+       Iframe grows → 100vh grows → canvas grows → content fully painted. */
+    html.ncti-embed, html.ncti-embed body {
+      overflow: visible;
+      touch-action: pan-y;
+    }
+    html.ncti-embed flutter-view {
+      position: relative !important;
+      width: 100% !important;
+      height: auto !important;
+      min-height: 100vh;
+      display: block;
+      touch-action: pan-y;
+    }
+    /* Flutter's internal shadow hosts can swallow vertical-pan gestures and
+       block the parent page from scrolling when the iframe is embedded.
+       Force pan-y on them too so the native scroller stays reachable. */
+    html.ncti-embed flt-glass-pane,
+    html.ncti-embed flt-scene-host,
+    html.ncti-embed flutter-view * {
+      touch-action: pan-y !important;
+    }
+  </style>
 </head>
 <body>
   <script>
-    window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
-            appRunner.runApp();
+    // One-shot eviction for stuck pre-1.0.34 Flutter service workers that are
+    // still serving an old main.dart.wasm (clients reported 1.0.25 stuck on
+    // screen). Unregister every SW except firebase-messaging-sw.js and wipe
+    // CacheStorage, then reload once. Guarded by localStorage so it runs once
+    // per client, no reload loop.
+    (function () {
+      if (!('serviceWorker' in navigator)) return;
+      try {
+        if (localStorage.getItem('ncti_sw_evicted_v1034') === '1') return;
+      } catch (_) { return; }
+      navigator.serviceWorker.getRegistrations().then(function (regs) {
+        var stale = regs.filter(function (r) {
+          var url = (r.active && r.active.scriptURL) || '';
+          return url.indexOf('firebase-messaging-sw.js') === -1;
+        });
+        if (stale.length === 0) {
+          try { localStorage.setItem('ncti_sw_evicted_v1034', '1'); } catch (_) {}
+          return;
+        }
+        Promise.all(stale.map(function (r) { return r.unregister(); }))
+          .then(function () {
+            return ('caches' in window)
+              ? caches.keys().then(function (ks) {
+                  return Promise.all(ks.map(function (k) { return caches.delete(k); }));
+                })
+              : null;
+          })
+          .then(function () {
+            try { localStorage.setItem('ncti_sw_evicted_v1034', '1'); } catch (_) {}
+            window.location.reload();
+          })
+          .catch(function () {
+            try { localStorage.setItem('ncti_sw_evicted_v1034', '1'); } catch (_) {}
           });
+      }).catch(function () {});
+    })();
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+  <script>
+    // Day-cell right-click opens the note dialog; suppress the browser's
+    // default menu so it doesn't overlap.
+    document.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+  </script>
+  <script>
+    (function () {
+      function isEmbed() {
+        var h = window.location.hash || '';
+        return h.indexOf('/embed') !== -1;
+      }
+      if (!isEmbed()) return;
+      document.documentElement.classList.add('ncti-embed');
+
+      // The Dart side (lib/common/embed_bridge_web.dart) is the authoritative
+      // source of both:
+      //   - content height (posted OUT via window.parent.postMessage)
+      //   - theme mode     (received IN via window.addEventListener message)
+      // This shim is a safety net: if a ncti-theme message arrives before the
+      // Flutter bundle has wired up its listener, stash the latest value so
+      // the Dart side can read it on startup from window.__ncti_initial_theme.
+      window.__ncti_initial_theme = null;
+      window.addEventListener('message', function (e) {
+        try {
+          if (!e || !e.data) return;
+          if (e.data.type === 'ncti-theme' && typeof e.data.theme === 'string') {
+            window.__ncti_initial_theme = e.data.theme;
+          }
+        } catch (_) {}
+      });
+
+      window.addEventListener('hashchange', function () {
+        if (!isEmbed()) {
+          document.documentElement.classList.remove('ncti-embed');
+        } else {
+          document.documentElement.classList.add('ncti-embed');
         }
       });
-    });
+    })();
   </script>
 </body>
 </html>

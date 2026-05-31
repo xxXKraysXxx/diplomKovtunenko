@@ -4,10 +4,13 @@
 
 import 'package:flutter/material.dart';
 
+import '../l10n/generated/app_localizations.dart';
+
 class ChangePasswordScreen extends StatelessWidget {
   const ChangePasswordScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       backgroundColor: Color(0xffffffff),
       appBar: AppBar(
@@ -19,7 +22,7 @@ class ChangePasswordScreen extends StatelessWidget {
           borderRadius: BorderRadius.zero,
         ),
         title: Text(
-          "Смена пароля",
+          l10n.changePasswordTitle,
           style: TextStyle(
             fontWeight: FontWeight.w700,
             fontStyle: FontStyle.normal,
@@ -178,7 +181,7 @@ class ChangePasswordScreen extends StatelessWidget {
                   ),
                   padding: EdgeInsets.all(16),
                   child: Text(
-                    "Продолжить",
+                    l10n.commonContinue,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w700,

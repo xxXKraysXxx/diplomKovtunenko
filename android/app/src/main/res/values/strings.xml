@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_today_schedule_desc">Расписание на сегодня</string>
+    <string name="widget_current_lesson_desc">Текущая пара</string>
+    <string name="widget_week_summary_desc">Расписание на неделю</string>
+</resources>

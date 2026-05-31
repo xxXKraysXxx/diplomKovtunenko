@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_row_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingVertical="5dp"
+    android:paddingHorizontal="4dp"
+    android:gravity="center_vertical">
+
+    <!-- Left accent strip: hidden by default; shown via INVISIBLE to keep
+         layout width stable so text columns don't shift between rows. -->
+    <ImageView
+        android:id="@+id/widget_row_accent"
+        android:layout_width="3dp"
+        android:layout_height="24dp"
+        android:background="@drawable/widget_accent_strip"
+        android:layout_marginEnd="6dp"
+        android:visibility="invisible"
+        android:contentDescription="@null" />
+
+    <TextView
+        android:id="@+id/widget_row_slot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="22dp"
+        android:gravity="center"
+        android:textColor="#EF4444"
+        android:textStyle="bold"
+        android:textSize="13sp"
+        android:paddingEnd="6dp" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingEnd="6dp">
+
+        <TextView
+            android:id="@+id/widget_row_subject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="#0F172A"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/widget_row_meta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:textColor="#64748B"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:paddingTop="1dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/widget_row_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="11sp"
+        android:textColor="#64748B" />
+</LinearLayout>

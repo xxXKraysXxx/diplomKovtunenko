@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Solid amber fill — used when a day carries one or more overrides /
+     deviations from the shablon template. Intentionally warm so the eye
+     catches it against the default gray "has lessons" cube. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="#EAB308" />
+    <size android:width="10dp" android:height="10dp" />
+</shape>

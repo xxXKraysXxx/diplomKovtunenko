@@ -1,0 +1,640 @@
+{
+    "@@locale": "ru",
+
+    "appTitle": "Расписание КТИ",
+    "@appTitle": {},
+
+    "navNews": "Новости",
+    "navNotifications": "Уведомления",
+    "navSchedule": "Расписание",
+    "navSettings": "Настройки",
+    "navAdmin": "Админ",
+
+    "commonCancel": "Отмена",
+    "commonContinue": "Продолжить",
+    "commonDelete": "Удалить",
+    "commonSave": "Сохранить",
+    "commonApply": "Применить",
+    "commonClose": "Закрыть",
+    "commonCopy": "Копировать",
+    "commonCopied": "Скопировано",
+    "commonOpen": "Открыть",
+    "commonRetry": "Повторить",
+    "commonEdit": "Изменить",
+    "commonSend": "Отправить",
+    "commonOk": "Ок",
+    "commonNext": "Далее",
+    "commonError": "Ошибка",
+    "commonErrorWith": "Ошибка: {message}",
+    "@commonErrorWith": {
+        "placeholders": { "message": { "type": "String" } }
+    },
+    "commonSearch": "Поиск",
+    "commonClear": "Очистить",
+    "commonReset": "Сбросить",
+    "commonNothingFound": "Ничего не найдено",
+
+    "sessionExpired": "Сессия истекла. Войдите снова.",
+    "sessionExpiredLogin": "Войти",
+    "connectionErrorTitle": "Что-то пошло не так",
+    "connectionErrorRetry": "Повторить",
+    "connectionErrorLoginAgain": "Войти заново",
+    "connectionErrorOffline": "Нет соединения с сервером. Проверьте интернет.",
+    "connectionErrorServer": "Сервер не отвечает. Попробуйте позже.",
+    "connectionErrorTimeout": "Превышено время ожидания. Попробуйте ещё раз.",
+    "connectionErrorUnknown": "Произошла ошибка.",
+    "connectionErrorDetails": "Подробнее",
+    "offlineBannerMessage": "Нет соединения с сервером — показаны последние данные",
+    "offlineBannerRetry": "Повторить",
+    "offlineBannerDismiss": "Скрыть",
+
+    "authBadCredentials": "Введите логин и пароль",
+    "authConnectionTimeout": "Тайм-аут соединения с сервером — проблема со связью или сервера на тех работах",
+    "authNetworkError": "Ошибка сети",
+
+    "loginTitle": "Вход",
+    "loginLabel": "Логин",
+    "passwordLabel": "Пароль",
+    "loginSubmit": "Войти",
+    "loginContinueAsGuest": "Продолжить как гость",
+    "loginRegisterHint": "Нет аккаунта? Зарегистрироваться как студент",
+
+    "registerTitle": "Регистрация",
+    "registerLoginEmpty": "Введите логин",
+    "registerPasswordTooShort": "Пароль должен быть не короче 6 символов",
+    "registerPasswordsMismatch": "Пароли не совпадают",
+    "registerGroupRequired": "Выберите группу",
+    "registerRepeatPassword": "Повторите пароль",
+    "registerSubmit": "Зарегистрироваться",
+    "registerHaveAccount": "Есть аккаунт? Войти",
+    "registerGroupLabel": "Группа",
+    "registerGroupsLoadError": "Не удалось загрузить группы: {message}",
+    "@registerGroupsLoadError": {
+        "placeholders": { "message": { "type": "String" } }
+    },
+
+    "newsTitle": "Новости",
+    "newsEmpty": "Пока нет новостей",
+    "newsOpenInBrowser": "Открыть в браузере",
+    "newsOpenOnSource": "Открыть на ncti.ru",
+    "newsOfflineUnavailable": "Статья ещё не подготовлена к офлайн-просмотру.",
+
+    "notificationsTitle": "Уведомления",
+    "notificationsMarkAllReadTooltip": "Прочитать все",
+    "notificationsSend": "Отправить",
+    "notificationsEmpty": "Нет уведомлений",
+    "notificationsMarkAllConfirmTitle": "Прочитать все?",
+    "notificationsMarkAllConfirmBody": "Пометить все уведомления как прочитанные?",
+    "notificationsMarkAllConfirm": "Прочитать",
+    "notificationsLoadError": "Не удалось загрузить уведомления:\n{message}",
+    "@notificationsLoadError": {
+        "placeholders": { "message": { "type": "String" } }
+    },
+    "notificationsScopeGlobal": "ГЛОБАЛ",
+    "notificationsSent": "Отправлено",
+    "notificationsComposeTitle": "Новое уведомление",
+    "notificationsRecipients": "Кому",
+    "notificationsGlobal": "Глобально",
+    "notificationsByGroup": "По группам",
+    "notificationsGroups": "Группы",
+    "notificationsGroupSearch": "Поиск группы",
+    "notificationsGroupsLoadError": "Не удалось загрузить группы",
+    "notificationsMessage": "Сообщение",
+    "notificationsMessageHint": "Что сообщить…",
+    "notificationsLinkDate": "Привязать к дате (необязательно)",
+    "notificationsPickDate": "Выбрать дату",
+    "notificationsLinkedDate": "Дата: {date}",
+    "@notificationsLinkedDate": {
+        "placeholders": { "date": { "type": "String" } }
+    },
+    "notificationsLinkedDateHint": "Заметка появится у получателей в календаре на этот день.",
+    "notificationsServerError": "Ошибка сервера",
+    "notificationsRelJustNow": "только что",
+    "notificationsRelMinutes": "{count} мин назад",
+    "@notificationsRelMinutes": {
+        "placeholders": { "count": { "type": "int" } }
+    },
+    "notificationsRelHours": "{count} ч назад",
+    "@notificationsRelHours": {
+        "placeholders": { "count": { "type": "int" } }
+    },
+    "notificationsRelDays": "{count} дн назад",
+    "@notificationsRelDays": {
+        "placeholders": { "count": { "type": "int" } }
+    },
+    "notifPrefsScheduleChanges": "Изменения в расписании",
+    "notifPrefsNews": "Новости",
+    "notifPrefsMessages": "Сообщения",
+    "notifPrefsMinigameCalls": "Вызовы в минииграх",
+    "changePasswordTitle": "Смена пароля",
+
+    "roleAdmin": "админ",
+    "roleTeacher": "преподаватель",
+    "roleStudent": "студент",
+    "roleSystem": "система",
+    "roleChipAdmin": "АДМИН",
+    "roleChipTeacher": "ПРЕПОД.",
+    "roleChipStudent": "СТУДЕНТ",
+    "roleChipSystem": "СИСТЕМА",
+
+    "notificationsAdminShowAllOn": "Показаны все уведомления (включая групповые). Нажмите, чтобы скрыть групповые.",
+    "notificationsAdminShowAllOff": "Показаны только глобальные. Нажмите, чтобы включить групповые.",
+
+    "settingsTitle": "Настройки",
+    "settingsAccount": "Аккаунт",
+    "settingsNotLoggedIn": "Вы не вошли",
+    "settingsLoginToSync": "Войдите, чтобы синхронизировать заметки",
+    "settingsLogin": "Войти",
+    "settingsLogout": "Выйти",
+    "settingsChangePassword": "Сменить пароль",
+    "settingsPushTitle": "Push-уведомления",
+    "settingsPrefNews": "Новости",
+    "settingsPrefAnnouncements": "Уведомления от преподавателей и администрации",
+    "settingsPrefScheduleChanges": "Изменения в расписании",
+    "settingsPrefTokenPending": "Ждём регистрации устройства…",
+    "settingsInterface": "Интерфейс",
+    "settingsHideEmptySlots": "Скрывать пустые пары",
+    "settingsShowLessonProgress": "Прогресс текущей пары",
+    "settingsShowWeekCarousel": "Лента дней вместо сетки",
+    "settingsScheduleView": "Вид расписания",
+    "settingsScheduleViewGrid": "Сетка",
+    "settingsScheduleViewDayStrip": "Лента дней",
+    "settingsScheduleViewWeekList": "По неделям",
+    "settingsDayColoring": "Раскраска дней с парами",
+    "settingsDayColoringAuto": "Авто",
+    "settingsDayColoringHasLessons": "Монотон",
+    "settingsDayColoringEvenOdd": "Чёт. / Нечёт.",
+    "settingsDynamicColor": "Цвета системы",
+    "settingsDynamicColorHint": "Material You (Android 12+)",
+    "settingsThemeSeedTitle": "Цвет темы",
+    "settingsTheme": "Тема",
+    "settingsThemeSystem": "Система",
+    "settingsThemeLight": "Светлая",
+    "settingsThemeDark": "Тёмная",
+    "settingsLanguage": "Язык",
+    "settingsLanguageSystem": "Система",
+    "settingsLanguageRu": "Русский",
+    "settingsLanguageEn": "English",
+    "settingsVersion": "Версия {version} (сборка {build})",
+    "@settingsVersion": {
+        "placeholders": {
+            "version": { "type": "String" },
+            "build": { "type": "String" }
+        }
+    },
+    "settingsVersionLoading": "Версия …",
+    "settingsClearCache": "Очистить кеш",
+    "settingsClearCacheHint": "Сбросить локальный кеш расписания и фильтр. Авторизация сохранится.",
+    "settingsClearCacheConfirmTitle": "Очистить кеш?",
+    "settingsClearCacheConfirmBody": "Локальный кеш расписания и сохранённый фильтр будут удалены. Авторизация сохранится.",
+    "settingsClearCacheDone": "Кеш очищен. Перезапустите приложение.",
+    "settingsAccentTitle": "Цвет моих уведомлений",
+    "settingsAccentHint": "Отмечает ваши уведомления и прикреплённые заметки.",
+    "settingsAccentPick": "Выбрать цвет…",
+    "settingsAccentDefault": "По умолчанию",
+    "settingsChangePasswordTitle": "Сменить пароль",
+    "settingsChangePasswordHint": "Введите текущий пароль и новый (>=6 символов, совпадают)",
+    "settingsChangePasswordCurrent": "Текущий пароль",
+    "settingsChangePasswordNew": "Новый пароль",
+    "settingsChangePasswordRepeat": "Повторите новый пароль",
+    "settingsChangePasswordSubmit": "Сменить",
+    "settingsChangePasswordDone": "Пароль изменён",
+    "settingsDebugTitle": "Отладка",
+    "settingsDebugTestTime": "Тестовое время",
+    "settingsDebugConnState": "Состояние соединения",
+    "settingsDebugOnline": "онлайн",
+    "settingsDebugOffline": "оффлайн",
+    "settingsDebugNoteQueue": "Очередь заметок",
+    "settingsDebugQueueEmpty": "пусто",
+    "settingsDebugQueueOps": "{count} оп.",
+    "@settingsDebugQueueOps": {
+        "placeholders": { "count": { "type": "int" } }
+    },
+    "settingsDebugLastSync": "Последняя синхронизация",
+    "settingsDebugShowFcm": "Показать FCM токен",
+    "settingsDebugForceSync": "Принудительная синхронизация",
+    "settingsDebugClearStorage": "Очистить локальное хранилище",
+    "settingsDebugDatePickHelp": "Дата",
+    "settingsDebugTimePickHelp": "Время",
+    "settingsDebugFcmTitle": "FCM токен",
+    "settingsDebugFcmUnavailable": "(токен недоступен)",
+    "settingsDebugFcmError": "(ошибка: {message})",
+    "@settingsDebugFcmError": {
+        "placeholders": { "message": { "type": "String" } }
+    },
+    "settingsDebugQueueEmptyMsg": "Очередь пуста",
+    "settingsDebugQueueNotSent": "Не отправлено: {count}",
+    "@settingsDebugQueueNotSent": {
+        "placeholders": { "count": { "type": "int" } }
+    },
+    "settingsDebugClearConfirmTitle": "Очистить хранилище?",
+    "settingsDebugClearConfirmBody": "Будут удалены локальные настройки, очередь заметок, кэш и тема. Авторизация сохранится.",
+    "settingsDebugClearDone": "Хранилище очищено. Перезапустите приложение.",
+    "settingsDebugWidgetLog": "Лог виджета",
+    "settingsDebugWidgetLogEmpty": "Лог пуст или файл не существует.",
+    "settingsDebugWidgetLogUnavailable": "Внешнее хранилище недоступно.",
+    "settingsDebugPalette": "Палитра (отладка)",
+    "paletteDebugTitle": "Отладка палитры",
+    "paletteDebugHint": "Нажмите на образец, чтобы временно переопределить токен. Изменения применяются вживую.",
+    "paletteDebugReset": "Сбросить",
+    "paletteDebugResetDone": "Все переопределения сброшены",
+    "paletteDebugSeedLabel": "Основной цвет",
+    "paletteDebugInspectorLabel": "Инспектор регионов",
+    "paletteDebugClearOverrideTooltip": "Сбросить переопределение",
+
+    "colorPickerTitle": "Выберите цвет",
+    "colorPickerPrimary": "Основные",
+    "colorPickerWheel": "Колесо",
+    "colorPickerPrimaryHeading": "Основные цвета",
+    "colorPickerShade": "Оттенок",
+    "colorPickerCustom": "Произвольный цвет",
+    "colorPickerCopied": "Скопировано в буфер обмена",
+
+    "pushRationaleTitle": "Уведомления",
+    "pushRationaleBodyWeb": "Разрешите уведомления, чтобы получать сообщения от преподавателей и узнавать об изменениях в расписании.\n\nПосле нажатия «Разрешить» браузер покажет системный запрос.",
+    "pushRationaleBodyMobile": "Включите уведомления, чтобы получать сообщения от преподавателей и узнавать об изменениях в расписании.",
+    "pushRationaleLater": "Позже",
+    "pushRationaleNotNow": "Не сейчас",
+    "pushRationaleAllow": "Разрешить",
+    "pushSnackbarOpen": "Открыть",
+    "pushPermissionBlocked": "Уведомления заблокированы в браузере",
+    "pushPermissionBlockedMobile": "Уведомления заблокированы в настройках системы",
+    "pushPermissionBlockedHelpTitle": "Как разблокировать",
+    "pushPermissionBlockedHelpBodyWeb": "Откройте настройки сайта в браузере (обычно значок замка в адресной строке), разрешите уведомления для этого сайта и перезагрузите страницу.",
+    "pushPermissionBlockedHelpBodyMobile": "Откройте системные настройки приложения и разрешите уведомления, затем вернитесь.",
+    "pushPermissionDeniedSnack": "Разрешение не получено",
+    "pushPermissionBlockedHelpOk": "Понятно",
+
+    "noteQueueSaveError": "Не удалось сохранить заметку: {message}",
+    "@noteQueueSaveError": {
+        "placeholders": { "message": { "type": "String" } }
+    },
+
+    "timeMinutesShort": "{count} мин",
+    "@timeMinutesShort": {
+        "placeholders": { "count": { "type": "int" } }
+    },
+    "timeHours": "{count, plural, one{{count} час} few{{count} часа} other{{count} часов}}",
+    "@timeHours": {
+        "placeholders": { "count": { "type": "int" } }
+    },
+    "timeHoursMinutes": "{hours, plural, one{{hours} час} few{{hours} часа} other{{hours} часов}} {minutes} мин",
+    "@timeHoursMinutes": {
+        "placeholders": {
+            "hours": { "type": "int" },
+            "minutes": { "type": "int" }
+        }
+    },
+
+    "scheduleTitle": "Расписание",
+    "scheduleReturnToToday": "Сегодня",
+    "scheduleFilterGroup": "Группа",
+    "scheduleFilterTeacher": "Преподаватель",
+    "scheduleFilterRoom": "Кабинет",
+    "scheduleFilterGroupPick": "Выберите группу",
+    "scheduleFilterTeacherPick": "Выберите преподавателя",
+    "scheduleFilterRoomPick": "Выберите кабинет",
+    "scheduleHasLessons": "Есть занятия",
+    "scheduleNoLessons": "Нет занятий",
+    "scheduleWeekOdd": "Нечётная неделя",
+    "scheduleWeekEven": "Чётная неделя",
+    "scheduleNoFilterPicked": "Выберите группу, преподавателя или кабинет",
+    "scheduleNoLessonsOnDay": "Нет занятий на этот день",
+    "scheduleNoLessonsOnDayShort": "Нет занятий",
+    "scheduleNoDataForWeek": "Нет данных за эту неделю",
+    "scheduleTodayBadge": "Сегодня",
+    "scheduleWeekPrev": "Предыдущая",
+    "scheduleWeekCurrent": "Текущая",
+    "scheduleWeekNext": "Следующая",
+    "scheduleWeekRange": "{fromDay}–{toDay} {month}",
+    "@scheduleWeekRange": {
+        "placeholders": {
+            "fromDay": { "type": "int" },
+            "toDay": { "type": "int" },
+            "month": { "type": "String" }
+        }
+    },
+    "scheduleWeekRangeCrossMonth": "{fromDay} {fromMonth} – {toDay} {toMonth}",
+    "@scheduleWeekRangeCrossMonth": {
+        "placeholders": {
+            "fromDay": { "type": "int" },
+            "fromMonth": { "type": "String" },
+            "toDay": { "type": "int" },
+            "toMonth": { "type": "String" }
+        }
+    },
+    "weekListRangeSameMonth": "{fromDay} {month} – {toDay} {month}, {parity}",
+    "@weekListRangeSameMonth": {
+        "placeholders": {
+            "fromDay": { "type": "int" },
+            "toDay": { "type": "int" },
+            "month": { "type": "String" },
+            "parity": { "type": "String" }
+        }
+    },
+    "weekListRangeCrossMonth": "{fromDay} {fromMonth} – {toDay} {toMonth}, {parity}",
+    "@weekListRangeCrossMonth": {
+        "placeholders": {
+            "fromDay": { "type": "int" },
+            "fromMonth": { "type": "String" },
+            "toDay": { "type": "int" },
+            "toMonth": { "type": "String" },
+            "parity": { "type": "String" }
+        }
+    },
+    "weekListRangeCrossYear": "{fromDay} {fromMonth} {fromYear} – {toDay} {toMonth} {toYear}, {parity}",
+    "@weekListRangeCrossYear": {
+        "placeholders": {
+            "fromDay": { "type": "int" },
+            "fromMonth": { "type": "String" },
+            "fromYear": { "type": "int" },
+            "toDay": { "type": "int" },
+            "toMonth": { "type": "String" },
+            "toYear": { "type": "int" },
+            "parity": { "type": "String" }
+        }
+    },
+    "weekListParityEven": "чётная",
+    "weekListParityOdd": "нечётная",
+    "scheduleDayHeader": "{day} {month} {year}, {weekday}",
+    "@scheduleDayHeader": {
+        "placeholders": {
+            "day": { "type": "int" },
+            "month": { "type": "String" },
+            "year": { "type": "int" },
+            "weekday": { "type": "String" }
+        }
+    },
+    "scheduleNowOngoing": "Идёт сейчас",
+    "scheduleNowEndsInMin": "Заканчивается через {count} мин",
+    "@scheduleNowEndsInMin": {
+        "placeholders": { "count": { "type": "int" } }
+    },
+    "scheduleNowOngoingUntil": "Идёт сейчас · до конца {timeLeft}",
+    "@scheduleNowOngoingUntil": {
+        "placeholders": { "timeLeft": { "type": "String" } }
+    },
+    "scheduleStartsIn": "Начнётся через {timeLeft}",
+    "@scheduleStartsIn": {
+        "placeholders": { "timeLeft": { "type": "String" } }
+    },
+    "scheduleNow": "Сейчас",
+    "schedulePairOrdinal": "Пара {ordinal}",
+    "@schedulePairOrdinal": {
+        "placeholders": { "ordinal": { "type": "int" } }
+    },
+    "scheduleOrdinalPair": "{ordinal} пара",
+    "@scheduleOrdinalPair": {
+        "placeholders": { "ordinal": { "type": "int" } }
+    },
+    "scheduleSubgroup": "подгруппа {value}",
+    "@scheduleSubgroup": {
+        "placeholders": { "value": { "type": "String" } }
+    },
+    "scheduleOverrideIndicator": "Изменено",
+    "scheduleNoteLabel": "Заметка",
+    "scheduleNoteOfflineHint": "Заметка будет сохранена при подключении к интернету",
+    "schedulePinnedNoteSingle": "Закреплённая заметка",
+    "schedulePinnedNoteMany": "Закреплённые заметки",
+    "scheduleDeleteNoteConfirmTitle": "Удалить заметку?",
+    "scheduleDeleteNoteConfirmBody": "Закреплённая заметка будет удалена у всех получателей.",
+    "scheduleRelToday": "сегодня в {time}",
+    "@scheduleRelToday": {
+        "placeholders": { "time": { "type": "String" } }
+    },
+    "scheduleRelYesterday": "вчера в {time}",
+    "@scheduleRelYesterday": {
+        "placeholders": { "time": { "type": "String" } }
+    },
+    "scheduleRelDaysAgo": "{count} дн назад",
+    "@scheduleRelDaysAgo": {
+        "placeholders": { "count": { "type": "int" } }
+    },
+    "scheduleNoteTime": "Время: {day} {month}, {time}",
+    "@scheduleNoteTime": {
+        "placeholders": {
+            "day": { "type": "int" },
+            "month": { "type": "String" },
+            "time": { "type": "String" }
+        }
+    },
+    "scheduleOfflineBanner": "Нет подключения. Работаем из кэша.",
+    "scheduleNoteForDay": "Заметка на {day}",
+    "@scheduleNoteForDay": {
+        "placeholders": { "day": { "type": "String" } }
+    },
+    "scheduleNoteHint": "Что-то важное на этот день…",
+    "scheduleLoadError": "Не удалось загрузить расписание:\n{message}",
+    "@scheduleLoadError": {
+        "placeholders": { "message": { "type": "String" } }
+    },
+    "scheduleNoConnection": "Нет соединения с сервером",
+
+    "monthShortJan": "янв",
+    "monthShortFeb": "фев",
+    "monthShortMar": "мар",
+    "monthShortApr": "апр",
+    "monthShortMay": "май",
+    "monthShortJun": "июн",
+    "monthShortJul": "июл",
+    "monthShortAug": "авг",
+    "monthShortSep": "сен",
+    "monthShortOct": "окт",
+    "monthShortNov": "ноя",
+    "monthShortDec": "дек",
+
+    "monthGenJan": "января",
+    "monthGenFeb": "февраля",
+    "monthGenMar": "марта",
+    "monthGenApr": "апреля",
+    "monthGenMay": "мая",
+    "monthGenJun": "июня",
+    "monthGenJul": "июля",
+    "monthGenAug": "августа",
+    "monthGenSep": "сентября",
+    "monthGenOct": "октября",
+    "monthGenNov": "ноября",
+    "monthGenDec": "декабря",
+
+    "monthLongJan": "Январь",
+    "monthLongFeb": "Февраль",
+    "monthLongMar": "Март",
+    "monthLongApr": "Апрель",
+    "monthLongMay": "Май",
+    "monthLongJun": "Июнь",
+    "monthLongJul": "Июль",
+    "monthLongAug": "Август",
+    "monthLongSep": "Сентябрь",
+    "monthLongOct": "Октябрь",
+    "monthLongNov": "Ноябрь",
+    "monthLongDec": "Декабрь",
+
+    "weekdayShortMon": "Пн",
+    "weekdayShortTue": "Вт",
+    "weekdayShortWed": "Ср",
+    "weekdayShortThu": "Чт",
+    "weekdayShortFri": "Пт",
+    "weekdayShortSat": "Сб",
+    "weekdayShortSun": "Вс",
+
+    "weekdayLongMon": "понедельник",
+    "weekdayLongTue": "вторник",
+    "weekdayLongWed": "среда",
+    "weekdayLongThu": "четверг",
+    "weekdayLongFri": "пятница",
+    "weekdayLongSat": "суббота",
+    "weekdayLongSun": "воскресенье",
+
+    "scheduleSelectedDate": "{day} {month}, {weekday}",
+    "@scheduleSelectedDate": {
+        "placeholders": {
+            "day": { "type": "int" },
+            "month": { "type": "String" },
+            "weekday": { "type": "String" }
+        }
+    },
+    "scheduleMonthHeader": "{month} {year}",
+    "@scheduleMonthHeader": {
+        "placeholders": {
+            "month": { "type": "String" },
+            "year": { "type": "int" }
+        }
+    },
+
+    "adminTitle": "Администрирование",
+    "adminTabUsers": "Пользователи",
+    "adminTabCreateTeacher": "Создать препод.",
+    "adminTabCreateAdmin": "Создать админа",
+    "adminTabPushRights": "Push-права",
+    "adminTabActivity": "Активность",
+    "adminTabSettings": "Настройки",
+    "adminSearchLogin": "Поиск по логину",
+    "adminRoleAdmins": "Админы",
+    "adminRoleTeachers": "Преподаватели",
+    "adminRoleStudents": "Студенты",
+    "adminUsersEmpty": "Нет пользователей",
+    "adminRecordDeleted": "Запись удалена",
+    "adminSelfMarker": "вы",
+    "adminLastActive": "активн.: {timestamp}",
+    "@adminLastActive": {
+        "placeholders": { "timestamp": { "type": "String" } }
+    },
+    "adminActions": "Действия",
+    "adminResetPassword": "Сбросить пароль",
+    "adminGroupPrefix": "группа {name}",
+    "@adminGroupPrefix": {
+        "placeholders": { "name": { "type": "String" } }
+    },
+    "adminResetOwnConfirmTitle": "Сбросить пароль себе?",
+    "adminResetOwnConfirmBody": "Вы сбрасываете пароль собственному аккаунту. После этого нужно будет войти заново. Продолжить?",
+    "adminDeleteUserConfirmTitle": "Удалить пользователя?",
+    "adminDeleteUserConfirmBody": "Удалить «{login}» ({role})?",
+    "@adminDeleteUserConfirmBody": {
+        "placeholders": {
+            "login": { "type": "String" },
+            "role": { "type": "String" }
+        }
+    },
+    "adminPasswordUpdatedFor": "Пароль обновлён для {login}",
+    "@adminPasswordUpdatedFor": {
+        "placeholders": { "login": { "type": "String" } }
+    },
+    "adminResetPasswordFor": "Сбросить пароль: {login}",
+    "@adminResetPasswordFor": {
+        "placeholders": { "login": { "type": "String" } }
+    },
+    "adminNewPassword": "Новый пароль",
+    "adminConfirmPassword": "Подтвердите пароль",
+    "adminCreateTeacherFormHint": "Заполните логин, пароль (>=6) и выберите преподавателя",
+    "adminCreatedNotice": "Создано: {login}",
+    "@adminCreatedNotice": {
+        "placeholders": { "login": { "type": "String" } }
+    },
+    "adminLoginField": "Логин",
+    "adminPasswordField": "Пароль",
+    "adminLoadError": "Ошибка загрузки: {message}",
+    "@adminLoadError": {
+        "placeholders": { "message": { "type": "String" } }
+    },
+    "adminTeacherField": "Преподаватель",
+    "adminCreateTeacherTitle": "Создать преподавателя",
+    "adminCreateAdminTitle": "Создать администратора",
+    "adminCreateAdminRequired": "Логин и пароль (>=6) обязательны",
+    "adminCreateAdminCreated": "Администратор создан: {login}",
+    "@adminCreateAdminCreated": {
+        "placeholders": { "login": { "type": "String" } }
+    },
+    "adminPushHint": "Можно отключить возможность рассылки уведомлений для отдельного преподавателя.",
+    "adminNoTeachers": "Нет пользователей-преподавателей",
+    "adminTeacherUnlinked": "преподаватель не привязан",
+    "adminTeacherId": "препод. #{id}",
+    "@adminTeacherId": {
+        "placeholders": { "id": { "type": "String" } }
+    },
+    "adminCanPushLabel": "Может отправлять уведомления",
+    "adminCanBroadcastGloballyLabel": "Может отправлять всем",
+    "adminNotificationsTab": "Уведомления",
+    "adminAppSettingsError": "Ошибка загрузки: {message}",
+    "@adminAppSettingsError": {
+        "placeholders": { "message": { "type": "String" } }
+    },
+    "adminTeachersGlobalTitle": "Преподаватели могут отправлять глобальные уведомления",
+    "adminTeachersGlobalHint": "Если выключено, преподаватели рассылают только по группам",
+    "adminNewsScrapeTitle": "Сбор новостей",
+    "adminNewsScrapeHint": "Получить свежие новости с сайта колледжа прямо сейчас. Сбор также запускается автоматически по расписанию.",
+    "adminNewsScrapeButton": "Запустить сбор новостей",
+    "adminNewsScrapeAccepted": "Сбор новостей запущен",
+    "adminNewsScrapeBusy": "Сбор уже идёт",
+    "adminNoData": "данных нет",
+    "adminStorageNotes": "заметки {size}",
+    "@adminStorageNotes": {
+        "placeholders": { "size": { "type": "String" } }
+    },
+    "adminStorageTotal": "всего {size}",
+    "@adminStorageTotal": {
+        "placeholders": { "size": { "type": "String" } }
+    },
+    "adminActivityEmpty": "Событий нет",
+    "adminActivity7d": "За 7 дней",
+    "adminActivity30d": "За 30 дней",
+    "adminActivityRegistrations": "Регистраций",
+    "adminActivityFailedLogins": "Неудачных входов",
+    "adminActivityPasswordResets": "Сбросов паролей",
+    "adminActivitySentNotifications": "Отправленных уведомлений",
+
+    "activityLabelRegister": "Регистрация",
+    "activityLabelLogin": "Вход",
+    "activityLabelLoginFailed": "Неудачный вход",
+    "activityLabelPasswordChanged": "Смена пароля",
+    "activityLabelPasswordResetByAdmin": "Сброс пароля (админ)",
+    "activityLabelCreatedByAdmin": "Создан админом",
+    "activityLabelUserDeleted": "Удалён",
+    "activityLabelCanPushToggled": "Push-права изменены",
+    "activityLabelCanBroadcastGloballyToggled": "Права на глобальную рассылку изменены",
+    "activityLabelAccentColorSet": "Выбран акцентный цвет",
+    "activityLabelNotifPrefsSet": "Настройки уведомлений изменены",
+    "activityLabelLoggedOut": "Выход",
+    "activityLabelAdminSettingUpdated": "Настройка администратора изменена",
+    "activityLabelNewsScrapeTriggered": "Запущен сбор новостей",
+    "activityLabelNotificationSent": "Отправлено уведомление",
+    "activityLabelNotificationDeleted": "Удалено уведомление",
+    "activityLabelDeviceRegistered": "Пользователь вошёл",
+    "activityLabelDeviceUnregistered": "Пользователь вышел",
+    "activityLabelDayNoteSet": "Заметка сохранена",
+    "activityLabelDayNoteDeleted": "Заметка удалена",
+
+    "activityFilterAll": "Все",
+    "activityFilterUsers": "Пользователи",
+    "activityFilterNotifications": "Уведомления",
+    "activityFilterNotes": "Заметки",
+    "activityFilterSecurity": "Безопасность",
+
+    "bytesB": "{value} Б",
+    "@bytesB": { "placeholders": { "value": { "type": "String" } } },
+    "bytesKb": "{value} КБ",
+    "@bytesKb": { "placeholders": { "value": { "type": "String" } } },
+    "bytesMb": "{value} МБ",
+    "@bytesMb": { "placeholders": { "value": { "type": "String" } } },
+    "bytesGb": "{value} ГБ",
+    "@bytesGb": { "placeholders": { "value": { "type": "String" } } }
+}

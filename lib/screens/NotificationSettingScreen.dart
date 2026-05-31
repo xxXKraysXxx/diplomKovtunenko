@@ -4,10 +4,13 @@
 
 import 'package:flutter/material.dart';
 
+import '../l10n/generated/app_localizations.dart';
+
 class NotificationSettingScreen extends StatelessWidget {
   const NotificationSettingScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       backgroundColor: Color(0xffffffff),
       appBar: AppBar(
@@ -19,7 +22,7 @@ class NotificationSettingScreen extends StatelessWidget {
           borderRadius: BorderRadius.zero,
         ),
         title: Text(
-          "Уведомления",
+          l10n.notificationsTitle,
           style: TextStyle(
             fontWeight: FontWeight.w700,
             fontStyle: FontStyle.normal,
@@ -46,7 +49,7 @@ class NotificationSettingScreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Text(
-                  "Изменения в расписании",
+                  l10n.notifPrefsScheduleChanges,
                   textAlign: TextAlign.start,
                   overflow: TextOverflow.clip,
                   style: TextStyle(
@@ -75,7 +78,7 @@ class NotificationSettingScreen extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Text(
-                    "Новости",
+                    l10n.notifPrefsNews,
                     textAlign: TextAlign.start,
                     overflow: TextOverflow.clip,
                     style: TextStyle(
@@ -105,7 +108,7 @@ class NotificationSettingScreen extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Text(
-                    "Сообщения",
+                    l10n.notifPrefsMessages,
                     textAlign: TextAlign.start,
                     overflow: TextOverflow.clip,
                     style: TextStyle(
@@ -135,7 +138,7 @@ class NotificationSettingScreen extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Text(
-                    "Вызовы в минииграх",
+                    l10n.notifPrefsMinigameCalls,
                     textAlign: TextAlign.start,
                     overflow: TextOverflow.clip,
                     style: TextStyle(
